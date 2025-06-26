@@ -1,13 +1,13 @@
 
 {
   "version": 2,
-  "buildCommand": "cd go && npm install && npm run build",
-  "outputDirectory": "go/dist",
-  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
