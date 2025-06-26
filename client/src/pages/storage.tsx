@@ -8,11 +8,6 @@ import { cn } from "@/lib/utils";
 import { DeleteConfirmationModal } from '@/components/delete-confirmation-modal';
 import { DatabaseManager } from '@/components/database-manager';
 import { neon } from '@neondatabase/serverless';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-
-// PDF.js worker setup - Use version-specific worker
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`;
 
 interface FileItem {
   id: number;
