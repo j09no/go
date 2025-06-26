@@ -59,7 +59,8 @@ function Router() {
 
                   </div>
                   <div>
-                    <h1 className="text-xl font-semibold gradient-text tracking-tight">Neet Practice</h1>
+                    <h1 className="text-xl font-semibold gradient-text tracking-tight">الزنجير الحديدي
+</h1>
                     <p className="text-xs text-gray-400 font-medium">
                       {new Date().toLocaleDateString('en-US', { 
                         weekday: 'long', 
