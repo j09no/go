@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { DeleteConfirmationModal } from '@/components/delete-confirmation-modal';
 import { DatabaseManager } from '@/components/database-manager';
 import { neon } from '@neondatabase/serverless';
-import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
