@@ -1,0 +1,631 @@
+
+/* Opacity Controls - Change these values to adjust opacity */
+:root {
+  --card-bg-opacity: 0.8;
+  --image-bg-opacity: 0.4;
+  --content-bg-opacity: 0.3;
+  --button-bg-opacity: 0.3;
+  --button-hover-opacity: 0.5;
+}
+
+.card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.background-card {
+  position: absolute;
+  width: 354px;
+  height: 184px;
+  background: transparent;
+  border-radius: 20px;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+}
+
+.background-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(90deg, #00D1FF,#8C45B3,#E53673,#D0F8CE,#FF0000 );
+  filter: glow(100px);
+  background-size: 200% 100%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  animation: rotation_481 200ms infinite linear;
+}
+
+@keyframes rotation_481 {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.card {
+  width: 350px;
+  height: 180px;
+  position: relative;
+  z-index: 1;
+  background: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  display: flex;
+  position: relative;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(40, 40, 40, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.image {
+  background: rgba(10, 10, 10, var(--image-bg-opacity));
+  border-radius: 20px 0 0 20px;
+  width: 40%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-right: 1px solid rgba(40, 40, 40, 0.6);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  border-radius: 20px 0 0 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(15, 15, 15, var(--content-bg-opacity));
+  border-radius: 0 20px 20px 0;
+  backdrop-filter: blur(15px);
+}
+
+.productTitle {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.first-letter {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Radio buttons styles */
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.radio-button input[type="radio"] {
+  display: none;
+}
+
+.radio-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  margin-right: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-circle::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked + .radio-circle {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.radio-button input[type="radio"]:checked + .radio-circle::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-button:nth-of-type(1) input[type="radio"]:checked + .radio-circle::before {
+  background-color: #ff6600;
+}
+
+.radio-button:nth-of-type(2) input[type="radio"]:checked + .radio-circle::before {
+  background-color: #ffffff;
+}
+
+.radio-button:nth-of-type(3) input[type="radio"]:checked + .radio-circle::before {
+  background-color: #26be00;
+}
+
+.radio-label {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.radio-button:hover .radio-circle {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.productTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffff9e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.productTitle .first-letter {
+  font-size: 36px;
+  color: #ff0000;
+  font-weight: 900;
+  text-shadow: 0 3px 6px rgba(255, 0, 0, 0.5);
+  margin-right: 2px;
+}
+
+.addtocart {
+  width: 60px;
+  padding: 8px 7px;
+  border: none;
+  background: rgba(15, 15, 10, 0.7);
+  color: #e6e6b3;
+  font-weight: 0;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  border-radius: 10px;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  mix-blend-mode: color-dodge;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(40, 40, 40, 0.3);
+}
+
+.addtocart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  transition: opacity 0.2s ease;
+}
+
+.addtocart:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0.7;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.addtocart:hover::before {
+  opacity: 0.1;
+}
+
+.addtocart:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button {
+  --background: linear-gradient(135deg, #FF3B30 0%, #D70015 100%);
+  --background-hover: linear-gradient(135deg, #FF453A 0%, #E8001A 100%);
+  --text: #fff;
+  --shadow: rgba(255, 59, 48, 0.25);
+  --paper: #FF3B30;
+  --paper-lines: #fff;
+  --trash: #ffffff;
+  --trash-lines: rgba(255, 255, 255, 0.8);
+  --check: #fff;
+  --check-background: #34C759;
+  position: relative;
+  border: none;
+  outline: none;
+  background: var(--btn, var(--background));
+  padding: 6px;
+  border-radius: 8px;
+  min-width: 32px;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  box-shadow: 
+    0 4px 12px var(--shadow),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(var(--scale, 1));
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 32px;
+  height: 32px;
+  font-size: 10px;
+  mix-blend-mode: screen;
+}
+
+.delete-button span {
+  display: block;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  opacity: var(--span-opacity, 1);
+  transform: translateX(var(--span-x, 0)) translateZ(0);
+  transition: transform 0.4s ease var(--span-delay, 0.2s), opacity 0.3s ease var(--span-delay, 0.2s);
+}
+
+.delete-button .trash {
+  display: block;
+  position: relative;
+  left: 0;
+  transform: translate(var(--trash-x, 0), var(--trash-y, 1px)) translateZ(0) scale(var(--trash-scale, 0.5));
+  transition: transform 0.5s;
+  margin: 0 auto;
+}
+
+.delete-button .trash:before,
+.delete-button .trash:after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--icon, var(--trash));
+  bottom: 100%;
+  transform-origin: 50% 6px;
+  transform: translate(var(--x, 3px), 2px) scaleY(var(--sy, 0.7)) rotate(var(--r, 0deg));
+  transition: transform 0.4s, background 0.3s;
+}
+
+.delete-button .trash:before {
+  left: 1px;
+}
+
+.delete-button .trash:after {
+  right: 1px;
+  --x: -3px;
+}
+
+.delete-button .trash .top {
+  position: absolute;
+  overflow: hidden;
+  left: -4px;
+  right: -4px;
+  bottom: 100%;
+  height: 40px;
+  z-index: 1;
+  transform: translateY(2px);
+}
+
+.delete-button .trash .top:before,
+.delete-button .trash .top:after {
+  content: "";
+  position: absolute;
+  border-radius: 1px;
+  background: var(--icon, var(--trash));
+  width: var(--w, 12px);
+  height: var(--h, 2px);
+  left: var(--l, 8px);
+  bottom: var(--b, 5px);
+  transition: background 0.3s, transform 0.4s;
+}
+
+.delete-button .trash .top:after {
+  --w: 28px;
+  --h: 2px;
+  --l: 0;
+  --b: 0;
+  transform: scaleX(var(--trash-line-scale, 1));
+}
+
+.delete-button .trash .top .paper {
+  width: 14px;
+  height: 18px;
+  background: var(--paper);
+  left: 7px;
+  bottom: 0;
+  border-radius: 1px;
+  position: absolute;
+  transform: translateY(-16px);
+  opacity: 0;
+}
+
+.delete-button .trash .top .paper:before,
+.delete-button .trash .top .paper:after {
+  content: "";
+  width: var(--w, 10px);
+  height: 2px;
+  border-radius: 1px;
+  position: absolute;
+  left: 2px;
+  top: var(--t, 2px);
+  background: var(--paper-lines);
+  transform: scaleY(0.7);
+  box-shadow: 0 9px 0 var(--paper-lines);
+}
+
+.delete-button .trash .top .paper:after {
+  --t: 5px;
+  --w: 7px;
+}
+
+.delete-button .trash .box {
+  width: 20px;
+  height: 25px;
+  border: 2px solid var(--icon, var(--trash));
+  border-radius: 1px 1px 4px 4px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  transition: border-color 0.3s;
+}
+
+.delete-button .trash .box:before,
+.delete-button .trash .box:after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: var(--h, 20px);
+  top: 0;
+  left: var(--l, 50%);
+  background: var(--b, var(--trash-lines));
+}
+
+.delete-button .trash .box:before {
+  border-radius: 2px;
+  margin-left: -2px;
+  transform: translateX(-3px) scale(0.6);
+  box-shadow: 10px 0 0 var(--trash-lines);
+  opacity: var(--trash-lines-opacity, 1);
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.delete-button .trash .box:after {
+  --h: 16px;
+  --b: var(--paper);
+  --l: 1px;
+  transform: translate(-0.5px, -16px) scaleX(0.5);
+  box-shadow: 7px 0 0 var(--paper), 14px 0 0 var(--paper), 21px 0 0 var(--paper);
+}
+
+.delete-button .trash .check {
+  padding: 4px 3px;
+  border-radius: 50%;
+  background: var(--check-background);
+  position: absolute;
+  left: 2px;
+  top: 24px;
+  opacity: var(--check-opacity, 0);
+  transform: translateY(var(--check-y, 0)) scale(var(--check-scale, 0.2));
+  transition: transform var(--check-duration, 0.2s) ease var(--check-delay, 0s), opacity var(--check-duration-opacity, 0.2s) ease var(--check-delay, 0s);
+}
+
+.delete-button .trash .check svg {
+  width: 8px;
+  height: 6px;
+  display: block;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-dasharray: 9px;
+  stroke-dashoffset: var(--check-offset, 9px);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--check);
+  transition: stroke-dashoffset 0.4s ease var(--checkmark-delay, 0.4s);
+}
+
+.delete-button.delete {
+  --span-opacity: 0;
+  --span-x: 16px;
+  --span-delay: 0s;
+  --trash-x: 46px;
+  --trash-y: 2px;
+  --trash-scale: 1;
+  --trash-lines-opacity: 0;
+  --trash-line-scale: 0;
+  --icon: #fff;
+  --check-offset: 0;
+  --check-opacity: 1;
+  --check-scale: 1;
+  --check-y: 16px;
+  --check-delay: 1.7s;
+  --checkmark-delay: 2.1s;
+  --check-duration: 0.55s;
+  --check-duration-opacity: 0.3s;
+}
+
+.delete-button.delete .trash:before,
+.delete-button.delete .trash:after {
+  --sy: 1;
+  --x: 0;
+}
+
+.delete-button.delete .trash:before {
+  --r: 40deg;
+}
+
+.delete-button.delete .trash:after {
+  --r: -40deg;
+}
+
+.delete-button.delete .trash .top .paper {
+  animation: paper 1.5s linear forwards 0.5s;
+}
+
+.delete-button.delete .trash .box:after {
+  animation: cut 1.5s linear forwards 0.5s;
+}
+
+.delete-button:hover {
+  --btn: var(--background-hover);
+  transform: translateY(-1px) scale(var(--scale, 1));
+  box-shadow: 
+    0 6px 16px rgba(255, 59, 48, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 
+    0 2px 8px rgba(255, 59, 48, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes paper {
+  10%,
+  40%,
+  70% {
+    transform: translateY(-16px);
+  }
+  20%,
+  30%,
+  50%,
+  60%,
+  80%,
+  90% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(4px);
+    opacity: 0;
+  }
+}
+
+@keyframes cut {
+  0%,
+  40% {
+    transform: translate(-0.5px, -16px) scaleX(0.5);
+  }
+  100% {
+    transform: translate(-0.5px, 4px) scaleX(0.5);
+  }
+}
+
+.upload-button {
+  width: 70px;
+  padding: 8px 7px;
+  border: none;
+  background: rgba(15, 15, 10, 0.7);
+  color: #e6e6b3;
+  font-weight: 0;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  border-radius: 10px;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  mix-blend-mode: color-dodge;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(40, 40, 40, 0.3);
+}
+
+.upload-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  transition: opacity 0.2s ease;
+}
+
+.upload-button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0.7;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upload-button:hover::before {
+  opacity: 0.1;
+}
+
+.upload-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-button span {
+  display: none;
+}
