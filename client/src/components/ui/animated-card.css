@@ -33,7 +33,6 @@
   bottom: 0;
   border-radius: 20px;
   padding: 2px;
-  background: linear-gradient(90deg, #00D1FF,#8C45B3,#E53673,#D0F8CE,#FF0000 );
   filter: glow(100px);
   background-size: 200% 100%;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
